@@ -21,6 +21,7 @@ public class ClienteEJB implements ClienteEJBLocal {
     public ClienteEJB() {
         // TODO Auto-generated constructor stub
     }
+
 	@Override
 	public List<Cliente> todosClientes() {
 		Query q = 
@@ -31,5 +32,30 @@ public class ClienteEJB implements ClienteEJBLocal {
 	@Override
 	public void insereCliente(Cliente cliente) {
 		em.persist(cliente);
+	}
+
+	@Override
+	public Cliente getCliente(long id) {
+		// TODO Auto-generated method stub
+		return em.find(Cliente.class, id);
+	}
+
+	@Override
+	public void remove(long id) {
+		Cliente cli = em.find(Cliente.class, id);
+		em.remove(cli);
+	}
+
+	@Override
+	public void update(long id, Cliente newCliente) {
+		// TODO Auto-generated method stub
+		Cliente oldCli = em.find(Cliente.class, id);
+
+		if(newCliente.getNome() != null)
+			oldCli.setNome(newCliente.getNome());
+		
+		oldCli.setSexo(newCliente.getSexo());
+		
+		em.merge(oldCli);
 	}
 }
