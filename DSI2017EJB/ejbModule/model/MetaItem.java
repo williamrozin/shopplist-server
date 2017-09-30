@@ -7,14 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ListItem {
+public class MetaItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(length = 100000000)
-	private MetaItem metaItem;
-	private boolean checked;
-	private float price;
+	private String description;
+	private Category category;
 
 	public long getId() {
 		return id;
@@ -24,23 +23,19 @@ public class ListItem {
 		this.id = id;
 	}
 
-	public boolean isChecked() {
-		return checked;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setChecked() {
-		this.checked = true;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void unsetChecked() {
-		this.checked = false;
+	public Category getCategory() {
+		return category;
 	}
 
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

@@ -1,5 +1,44 @@
 package ejb;
 
-public class ShoppingListEJB {
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+import model.ListItem;
+import model.ShoppingList;
+
+public class ShoppingListEJB implements ShoppingListEJBLocal {
+
+	@PersistenceContext(name = "dsi2017context")
+	private EntityManager em;
+
+	public ShoppingListEJB() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public List<ShoppingList> getAllShoppingLists() {
+		return em.createNamedQuery("getAllShoppingLists", ShoppingList.class).getResultList();
+	}
+
+	@Override
+	public void add(ShoppingList list) {
+		em.persist(list);
+	}
+
+	@Override
+	public void update(long id, ShoppingList newList) {
+		ShoppingList oldList = em.find(ShoppingList.class, id);
+
+		if (newList.getDescription() != null)
+			oldList.setDescription(newList.getDescription());
+			
+		em.merge(oldList);
+	}
+
+	@Override
+	public void remove(long id) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		em.remove(list);
+	}
 }
