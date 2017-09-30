@@ -1,9 +1,14 @@
 package ejb;
 
 import javax.ejb.Local;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 import model.User;
 
 @Local
+@Table(name = "User")
 public interface UserEJBLocal {
 	public User getUser(long id);
 

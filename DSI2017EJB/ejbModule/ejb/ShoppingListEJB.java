@@ -4,7 +4,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import model.ListItem;
 import model.ShoppingList;
 
 public class ShoppingListEJB implements ShoppingListEJBLocal {
