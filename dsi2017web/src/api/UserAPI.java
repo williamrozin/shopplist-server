@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import ejb.UserEJBLocal;
 import model.User;
 
-@Path("/user")
+//@Path("/user")
 @RequestScoped
 public class UserAPI {
 	

@@ -17,11 +17,13 @@ import javax.ws.rs.core.Response;
 import ejb.ListItemEJBLocal;
 import model.ListItem;
 
-@Path("/item")
+//@Path("/item")
 @RequestScoped
 public class ListItemAPI {
 	
 	@EJB
 	private ListItemEJBLocal listItemEJB;
+	
+
 	
 }

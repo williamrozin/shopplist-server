@@ -1,11 +1,14 @@
 package ejb;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.Category;
 
+@Stateless
 public class CategoryEJB implements CategoryEJBLocal {
 
 	@PersistenceContext(name = "dsi2017context")

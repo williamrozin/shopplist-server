@@ -8,16 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@NamedQueries({
+	@NamedQuery(name="getAllShoppingLists",
+			query="select c from ShoppingList c")
+})
 
 @Entity
 public class ShoppingList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(length = 100000000)
 	private String description;
 	private boolean completed;
 	private User user;
+	@Temporal(value=TemporalType.DATE)
 	private Date date;
 	private List<ListItem> items;
 

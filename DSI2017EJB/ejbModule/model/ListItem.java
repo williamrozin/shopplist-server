@@ -1,17 +1,26 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@NamedQueries({
+	@NamedQuery(name="getAllListItems",
+			query="select c from ListItem c")
+})
 
 @Entity
 public class ListItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(length = 100000000)
+	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
 	private MetaItem metaItem;
 	private boolean checked;
 	private float price;

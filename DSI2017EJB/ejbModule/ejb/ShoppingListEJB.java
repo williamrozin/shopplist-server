@@ -1,11 +1,14 @@
 package ejb;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.ListItem;
 import model.ShoppingList;
-
+@Stateless
 public class ShoppingListEJB implements ShoppingListEJBLocal {
 
 	@PersistenceContext(name = "dsi2017context")
@@ -39,5 +42,23 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	public void remove(long id) {
 		ShoppingList list = em.find(ShoppingList.class, id);
 		em.remove(list);
+	}
+
+	@Override
+	public ShoppingList getShoppingList(long id) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		return list;
+	}
+
+	@Override
+	public void addItemOnList(long id, ListItem listItem) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		list.addItemOnList(listItem);
+	}
+	
+	@Override
+	public void removeItemFromList(long id, ListItem listItem) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		list.removeItemOnList(listItem);
 	}
 }

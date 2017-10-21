@@ -12,5 +12,4 @@ public class StatusAPI {
 	public String getClientes(){
 		return "I am alive";
 	}
-	
 }

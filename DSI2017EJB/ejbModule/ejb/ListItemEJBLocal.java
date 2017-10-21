@@ -12,7 +12,6 @@ import model.ListItem;
 @NamedQueries({ @NamedQuery(name = "getAllListItems", query = "SELECT e FROM ListItem e") })
 
 @Local
-@Table(name = "ListItem")
 public interface ListItemEJBLocal {
 
 	public List<ListItem> getAllListItems();

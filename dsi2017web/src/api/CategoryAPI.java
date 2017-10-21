@@ -26,7 +26,27 @@ public class CategoryAPI {
 	
 	@GET
 	@Produces("application/json")
-	public List<Category> getClientes(){
+	public List<Category> getCategories(){
 		return categoryEJB.getCategories();
+	}
+	
+	@POST
+	@Consumes("application/json")
+	public void add(Category category){
+		categoryEJB.add(category);
+	}
+	
+	@PUT
+	@Path("/{id}")
+	@Consumes("application/json")
+	public void update(@PathParam("id") long id, Category category){
+		categoryEJB.update(id, category);
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	@Consumes("application/json")
+	public void remove(@PathParam("id") long id){
+		categoryEJB.remove(id);
 	}
 }

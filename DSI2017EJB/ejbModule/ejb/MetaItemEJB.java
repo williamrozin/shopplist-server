@@ -1,11 +1,13 @@
 package ejb;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.MetaItem;
-
+@Stateless
 public class MetaItemEJB implements MetaItemEJBLocal {
 
 	@PersistenceContext(name = "dsi2017context")
