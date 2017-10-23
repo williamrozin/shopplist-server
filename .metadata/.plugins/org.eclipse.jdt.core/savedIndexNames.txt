@@ -1,0 +1,4 @@
+INDEX VERSION 1.130+/home/william/Shopplist/shopplist-server/.metadata/.plugins/org.eclipse.jdt.core
+2161519052.index
+3130123186.index
+1527302857.index

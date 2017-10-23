@@ -17,13 +17,54 @@ import javax.ws.rs.core.Response;
 import ejb.ListItemEJBLocal;
 import model.ListItem;
 
-//@Path("/item")
+@Path("/item")
 @RequestScoped
 public class ListItemAPI {
 	
 	@EJB
 	private ListItemEJBLocal listItemEJB;
-	
 
+	@GET
+	@Produces("application/json")
+	public List<ListItem> getAllItems(){
+		return listItemEJB.getAllListItems();
+	}
+
+	@GET
+	@Path("/{id}")
+	@Produces("application/json")
+	public ListItem getItem(PathParam("id") long id){
+		return listItemEJB.getListItem(id);
+	}
+
+	@POST
+	@Consumes("application/json")
+	public void add(ListItem listItem){
+		listItemEJB.add(listItem);
+	}
+
+	@PUT
+	@Path("/{id}")
+	@Consumes("application/json")
+	public void update(@PathParam("id") long id, ListItem listItem){
+		listItemEJB.update(id, listItem);
+	}
+
+	@PUT
+	@Path("/{id}/check")
+	public void check(@PathParam("id") long id){
+		listItemEJB.check(id);
+	}
+
+	@PUT
+	@Path("/{id}/unckeck")
+	public void unckeck(@PathParam("id") long id){
+		listItemEJB.unckeck(id);
+	}
 	
+	@DELETE
+	@Path("/{id}")
+	public void remove(@PathParam("id") long id){
+		listItemEJB.remove(id);
+	}	
 }

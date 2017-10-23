@@ -29,7 +29,14 @@ public class CategoryAPI {
 	public List<Category> getCategories(){
 		return categoryEJB.getCategories();
 	}
-	
+
+	@GET
+	@Path("/{id}")
+	@Produces("application/json")
+	public Category getCategory(PathParam("id") long id){
+		return categoryEJB.getCategory(id);
+	}
+
 	@POST
 	@Consumes("application/json")
 	public void add(Category category){
@@ -45,7 +52,6 @@ public class CategoryAPI {
 	
 	@DELETE
 	@Path("/{id}")
-	@Consumes("application/json")
 	public void remove(@PathParam("id") long id){
 		categoryEJB.remove(id);
 	}

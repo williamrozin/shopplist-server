@@ -52,4 +52,16 @@ public class ListItem {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+
+	public MetaItem getMetaItem() {
+		return metaItem;
+	}
+
+	public void setMetaItem(MetaItem metaItem) {
+		this.metaItem = metaItem;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
 }

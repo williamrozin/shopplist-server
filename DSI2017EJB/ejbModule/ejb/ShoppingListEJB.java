@@ -61,4 +61,20 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 		ShoppingList list = em.find(ShoppingList.class, id);
 		list.removeItemOnList(listItem);
 	}
+
+
+	@Override
+	public void setListCompleted(long id) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		list.setCompleted();
+		em.merge(list);
+		
+	}
+
+	@Override
+	public void unsetListCompleted(long id) {
+		ShoppingList list = em.find(ShoppingList.class, id);
+		list.unsetCompleted();
+		em.merge(list);
+	}
 }

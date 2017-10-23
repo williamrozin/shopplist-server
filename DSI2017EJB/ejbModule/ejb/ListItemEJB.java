@@ -49,4 +49,29 @@ public class ListItemEJB implements ListItemEJBLocal {
 		em.remove(item);
 	}
 
+	@Override
+	public ListItem getListItem(long id) {
+		ListItem item = em.find(ListItem.class, id);
+		return item;
+	}
+
+
+	@Override
+	public void check(long id) {
+		ListItem oldItem = em.find(ListItem.class, id);
+
+		oldItem.setChecked();	
+
+		em.merge(oldItem);
+	}
+
+	@Override
+	public void unckeck(long id) {
+		ListItem oldItem = em.find(ListItem.class, id);
+
+		oldItem.unsetChecked();
+
+		em.merge(oldItem);		
+	}
+
 }

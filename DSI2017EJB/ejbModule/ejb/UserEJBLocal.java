@@ -10,13 +10,11 @@ import model.User;
 @Local
 @Table(name = "User")
 public interface UserEJBLocal {
-	public User getUser(long id);
+	public User login(String email, String password);
 
-	public void add(User user);
+	public void signup(User user);
 
-	public void update(long id, User user);
-
-	public void remove(long id);
+	public void update(String email, User user);
 	
-	public void changePassword(int id, String newPassword);
+	public void changePassword(String email, String newPassword);
 }

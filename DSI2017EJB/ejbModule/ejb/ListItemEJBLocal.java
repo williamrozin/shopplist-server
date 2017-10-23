@@ -15,10 +15,16 @@ import model.ListItem;
 public interface ListItemEJBLocal {
 
 	public List<ListItem> getAllListItems();
+	
+	public ListItem getListItem(long id);
 
 	public void add(ListItem listItem);
 
 	public void update(long id, ListItem listItem);
 
 	public void remove(long id);
+	
+	public void check(long id);
+	
+	public void unckeck(long id);
 }

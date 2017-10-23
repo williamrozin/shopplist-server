@@ -20,37 +20,29 @@ public class UserEJB implements UserEJBLocal {
 	}
 
 	@Override
-	public User getUser(long id) {
-		return em.find(User.class, id);
+	public User login(String email, String password) {
+		User user = em.find(User.class, email);
+		return user.login(email, password);
 	}
 
 	@Override
-	public void add(User user) {
+	public void signup(User user) {
 		em.persist(user);
 	}
 
 	@Override
-	public void update(long id, User newUser) {
-		User oldUsr = em.find(User.class, id);
+	public void update(String email, User newUser) {
+		User oldUsr = em.find(User.class, email);
 
 		if (newUser.getNome() != null)
 			oldUsr.setNome(newUser.getNome());
-
-		if (newUser.getNome() != null)
-			oldUsr.setEmail(newUser.getEmail());
 
 		em.merge(oldUsr);
 	}
 
 	@Override
-	public void remove(long id) {
-		User cli = em.find(User.class, id);
-		em.remove(cli);
-	}
-
-	@Override
-	public void changePassword(int id, String newPassword) {
-		User oldUsr = em.find(User.class, id);
+	public void changePassword(String email, String newPassword) {
+		User oldUsr = em.find(User.class, email);
 
 		if (newPassword != null)
 			oldUsr.setPassword(newPassword);

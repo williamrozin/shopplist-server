@@ -54,6 +54,10 @@ public class ShoppingList {
 		this.completed = true;
 	}
 
+	public void unsetCompleted() {
+		this.completed = true;
+	}
+
 	public User getUser() {
 		return user;
 	}

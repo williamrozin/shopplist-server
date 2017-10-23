@@ -10,18 +10,10 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private String email;
 	private long id;
 	private String nome;
-	private String email;
 	private String password;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -29,6 +21,14 @@ public class User {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public boolean login(String email, String password) {
+		return this.email == email && this.password == password ? this : null;
 	}
 
 	public String getEmail() {
@@ -39,11 +39,15 @@ public class User {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public long getId() {
+		return id;
 	}
-	
-	public boolean login(String email, String password) {
-		return this.email == email && this.password == password;
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }
