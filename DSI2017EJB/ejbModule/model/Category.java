@@ -20,6 +20,9 @@ public class Category {
 	private String color;
 	private String description;
 
+	public Category(){
+		
+	}
 	public long getId() {
 		return id;
 	}

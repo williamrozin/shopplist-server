@@ -34,7 +34,7 @@ public class MetaItemAPI {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public MetaItem getMetaItem(PathParam("id") long id){
+	public MetaItem getMetaItem(@PathParam("id") long id){
 		return metaItemEJB.getMetaItem(id);
 	}
 

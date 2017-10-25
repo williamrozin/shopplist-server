@@ -30,6 +30,9 @@ public class ShoppingList {
 	private Date date;
 	private List<ListItem> items;
 
+	public void ShoppingList(){
+		
+	}
 	public long getId() {
 		return id;
 	}

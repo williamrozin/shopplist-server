@@ -47,12 +47,6 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	}
 
 	@Override
-	public ejb.List<MetaItem> getAllMetaItems() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public MetaItem getMetaItem(long id) {
 		MetaItem item = em.find(MetaItem.class, id);
 		return item;

@@ -1,18 +1,17 @@
 package api;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import ejb.UserEJBLocal;
 import model.Category;
@@ -26,29 +25,31 @@ public class UserAPI {
 	private UserEJBLocal clienteEJB;
 	
 	@POST
+	@Path("/login")
 	@Produces("application/json")
 	@Consumes("application/json")
-	public User login(String email, String password){
+	public User login(@HeaderParam("email") String email, @HeaderParam("password") String password){
 		return clienteEJB.login(email, password);
 	}
 	
 	@POST
+	@Path("/signup")
 	@Consumes("application/json")
-	public void signup(User user){
-		clienteEJB.signup(user);
+	public void signup(@FormDataParam("email") String email, @FormDataParam("password") String password, @FormDataParam("name") String name){
+		clienteEJB.signup(email, name, password);
 	}
 
 	@PUT
-	@Path("/{email}")
+	@Path("/{id}")
 	@Consumes("application/json")
-	public void update(@PathParam("email") String email, User user){
-		clienteEJB.update(email, user);
+	public void update(@PathParam("id") long id, User user){
+		clienteEJB.update(id, user);
 	}
 	
 	@PUT
-	@Path("/reset-password/{email}")
+	@Path("/reset-password/{id}")
 	@Consumes("application/json")
-	public void changePassword(@PathParam("email") String email, String newPassword){
-		clienteEJB.changePassword(email, newPassword);
+	public void changePassword(@PathParam("id") long id, String newPassword){
+		clienteEJB.changePassword(id, newPassword);
 	}	
 }

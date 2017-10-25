@@ -25,6 +25,9 @@ public class ListItem {
 	private boolean checked;
 	private float price;
 
+	public ListItem(){
+		
+	}
 	public long getId() {
 		return id;
 	}
