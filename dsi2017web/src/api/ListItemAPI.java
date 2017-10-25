@@ -33,7 +33,7 @@ public class ListItemAPI {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public ListItem getItem(PathParam("id") long id){
+	public ListItem getItem(@PathParam("id") long id){
 		return listItemEJB.getListItem(id);
 	}
 

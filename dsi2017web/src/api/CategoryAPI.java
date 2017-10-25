@@ -33,7 +33,7 @@ public class CategoryAPI {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Category getCategory(PathParam("id") long id){
+	public Category getCategory(@PathParam("id") long id){
 		return categoryEJB.getCategory(id);
 	}
 

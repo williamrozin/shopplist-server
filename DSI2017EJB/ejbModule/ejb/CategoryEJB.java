@@ -48,12 +48,6 @@ public class CategoryEJB implements CategoryEJBLocal {
 	}
 
 	@Override
-	public ejb.List<Category> getCategories() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Category getCategory(long id) {
 		Category cat = em.find(Category.class, id);
 		return cat;

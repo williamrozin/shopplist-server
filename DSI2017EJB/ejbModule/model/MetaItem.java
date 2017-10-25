@@ -21,6 +21,9 @@ public class MetaItem {
 	private String description;
 	private Category category;
 
+	public MetaItem(){
+		
+	}
 	public long getId() {
 		return id;
 	}
