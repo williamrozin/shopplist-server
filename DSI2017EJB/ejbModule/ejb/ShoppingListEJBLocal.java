@@ -29,4 +29,8 @@ public interface ShoppingListEJBLocal {
 	public void addItemOnList(long id, ListItem listItem);
 	
 	public void removeItemFromList(long id, ListItem listItem);
+	
+	public void setListCompleted(long id);
+	
+	public void unsetListCompleted(long id);
 }

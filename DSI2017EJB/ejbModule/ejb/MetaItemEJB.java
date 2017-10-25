@@ -46,4 +46,10 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 		em.remove(item);
 	}
 
+	@Override
+	public MetaItem getMetaItem(long id) {
+		MetaItem item = em.find(MetaItem.class, id);
+		return item;
+	}
+
 }

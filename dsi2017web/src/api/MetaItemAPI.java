@@ -14,45 +14,48 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import ejb.CategoryEJBLocal;
+import ejb.MetaItemEJBLocal;
 import model.Category;
+import model.MetaItem;
 
-@Path("/category")
+@Path("/meta-item")
 @RequestScoped
-public class CategoryAPI {
+public class MetaItemAPI {
 	
 	@EJB
-	private CategoryEJBLocal categoryEJB;
+	private MetaItemEJBLocal metaItemEJB;
 	
 	@GET
 	@Produces("application/json")
-	public List<Category> getCategories(){
-		return categoryEJB.getCategories();
+	public List<MetaItem> getAllMetaItems(){
+		return metaItemEJB.getAllMetaItems();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Category getCategory(@PathParam("id") long id){
-		return categoryEJB.getCategory(id);
+	public MetaItem getMetaItem(@PathParam("id") long id){
+		return metaItemEJB.getMetaItem(id);
 	}
 
 	@POST
 	@Consumes("application/json")
-	public void add(Category category){
-		categoryEJB.add(category);
+	public void add(MetaItem metaItem){
+		metaItemEJB.add(metaItem);
 	}
 	
 	@PUT
 	@Path("/{id}")
 	@Consumes("application/json")
-	public void update(@PathParam("id") long id, Category category){
-		categoryEJB.update(id, category);
+	public void update(@PathParam("id") long id, MetaItem metaItem){
+		metaItemEJB.update(id, metaItem);
 	}
 	
 	@DELETE
 	@Path("/{id}")
+	@Consumes("application/json")
 	public void remove(@PathParam("id") long id){
-		categoryEJB.remove(id);
+		metaItemEJB.remove(id);
 	}
+	
 }

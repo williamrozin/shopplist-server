@@ -47,4 +47,10 @@ public class CategoryEJB implements CategoryEJBLocal {
 		em.remove(cat);
 	}
 
+	@Override
+	public Category getCategory(long id) {
+		Category cat = em.find(Category.class, id);
+		return cat;
+	}
+
 }

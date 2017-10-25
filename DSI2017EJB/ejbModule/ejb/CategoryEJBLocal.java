@@ -16,6 +16,8 @@ import model.Category;
 public interface CategoryEJBLocal {
 
 	public List<Category> getCategories();
+	
+	public Category getCategory(long id);
 
 	public void add(Category category);
 

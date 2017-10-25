@@ -1,9 +1,12 @@
 package ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.ShoppingList;
 import model.User;
 
 /**
@@ -20,12 +23,21 @@ public class UserEJB implements UserEJBLocal {
 	}
 
 	@Override
-	public User getUser(long id) {
-		return em.find(User.class, id);
+	public User login(String email, String password) {
+		List<User> users = em.createNamedQuery("getAllUsers", User.class).getResultList();
+		
+		for(User user:users) {
+			if (user.login(email, password)) {
+				return user;
+			}
+		}
+		
+		return null;
 	}
 
 	@Override
-	public void add(User user) {
+	public void signup(String email, String name, String password) {
+		User user = new User(email, name, password);
 		em.persist(user);
 	}
 
@@ -33,23 +45,14 @@ public class UserEJB implements UserEJBLocal {
 	public void update(long id, User newUser) {
 		User oldUsr = em.find(User.class, id);
 
-		if (newUser.getNome() != null)
-			oldUsr.setNome(newUser.getNome());
-
-		if (newUser.getNome() != null)
-			oldUsr.setEmail(newUser.getEmail());
+		if (newUser.getName() != null)
+			oldUsr.setName(newUser.getName());
 
 		em.merge(oldUsr);
 	}
 
 	@Override
-	public void remove(long id) {
-		User cli = em.find(User.class, id);
-		em.remove(cli);
-	}
-
-	@Override
-	public void changePassword(int id, String newPassword) {
+	public void changePassword(long id, String newPassword) {
 		User oldUsr = em.find(User.class, id);
 
 		if (newPassword != null)

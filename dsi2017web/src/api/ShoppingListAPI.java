@@ -51,16 +51,30 @@ public class ShoppingListAPI {
 	public void update(@PathParam("id") long id, ShoppingList list){
 		shoppingListEJB.update(id, list);
 	}
+
+	@PUT
+	@Path("/{id}/complete")
+	@Consumes("application/json")
+	public void complete(@PathParam("id") long id){
+		shoppingListEJB.setListCompleted(id);
+	}
+
+	@PUT
+	@Path("/{id}/uncomplete")
+	@Consumes("application/json")
+	public void uncomplete(@PathParam("id") long id){
+		shoppingListEJB.unsetListCompleted(id);
+	}
 	
 	@PUT
-	@Path("/{id}/item")
+	@Path("/{id}/item/add")
 	@Consumes("application/json")
 	public void addItemOnList(@PathParam("id") long id, ListItem listItem){
 		shoppingListEJB.addItemOnList(id, listItem);
 	}
 	
 	@PUT
-	@Path("/{id}/item")
+	@Path("/{id}/item/remove")
 	@Consumes("application/json")
 	public void removeItemFromList(@PathParam("id") long id, ListItem listItem){
 		shoppingListEJB.removeItemFromList(id, listItem);

@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 import model.MetaItem;
 
-@NamedQueries({ @NamedQuery(name = "getAllMetaItems", query = "SELECT e FROM MetaItem e") })
-
 @Local
 @Table(name = "MetaItem")
 public interface MetaItemEJBLocal {
 	public List<MetaItem> getAllMetaItems();
+	
+	public MetaItem getMetaItem(long id);
 
 	public void add(MetaItem metaItem);
 

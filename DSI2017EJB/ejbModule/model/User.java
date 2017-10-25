@@ -5,30 +5,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@NamedQueries({
+	@NamedQuery(name="getAllUsers",
+			query="select c from User c")
+})
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private String nome;
 	private String email;
+	private String name;
 	private String password;
 
-	public long getId() {
-		return id;
+	public User(String email, String name, String password) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public String getName() {
+		return name;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public boolean login(String email, String password) {
+		return this.email.compareTo(email) > -1 && this.password.compareTo(password) > -1;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -39,11 +52,15 @@ public class User {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public long getId() {
+		return id;
 	}
-	
-	public boolean login(String email, String password) {
-		return this.email == email && this.password == password;
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }
