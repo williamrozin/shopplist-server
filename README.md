@@ -33,10 +33,6 @@ On the way
 * [GlassFish](https://javaee.github.io/glassfish/)
 * [Eclipse](http://www.eclipse.org/downloads/eclipse-packages/)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
 * **William Rozin Gaspar** <williamrozingaspar@gmail.com>
