@@ -24,6 +24,7 @@ public class MetaItem {
 	public MetaItem(){
 		
 	}
+
 	public long getId() {
 		return id;
 	}

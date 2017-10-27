@@ -16,9 +16,9 @@ public interface MetaItemEJBLocal {
 	
 	public MetaItem getMetaItem(long id);
 
-	public void add(MetaItem metaItem);
+	public void add(String description, long id);
 
-	public void update(long id, MetaItem metaItem);
+	public void update(long id, String description, long categoryId);
 
 	public void remove(long id);
 }

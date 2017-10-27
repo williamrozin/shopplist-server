@@ -6,7 +6,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.Category;
 import model.ListItem;
+import model.MetaItem;
 @Stateless
 public class ListItemEJB implements ListItemEJBLocal {
 
@@ -23,22 +25,21 @@ public class ListItemEJB implements ListItemEJBLocal {
 	}
 
 	@Override
-	public void add(ListItem listItem) {
+	public void add(long metaItemId, float price) {
+		MetaItemEJB ejb = new MetaItemEJB();
+		MetaItem metaItem =  ejb.getMetaItem(metaItemId);
+		ListItem listItem = new ListItem();		
+		listItem.setMetaItem(metaItem);
+		listItem.setPrice(price);
 		em.persist(listItem);
 	}
 
 	@Override
-	public void update(long id, ListItem newItem) {
+	public void update(long id, float price) {
 		ListItem oldItem = em.find(ListItem.class, id);
 
-		if (newItem.isChecked() != oldItem.isChecked())
-			if (newItem.isChecked())
-				oldItem.setChecked();
-			else
-				oldItem.unsetChecked();
-		
-		if (newItem.getPrice() != oldItem.getPrice())
-			oldItem.setPrice(newItem.getPrice());		
+		if (price != oldItem.getPrice())
+			oldItem.setPrice(price);		
 
 		em.merge(oldItem);
 	}

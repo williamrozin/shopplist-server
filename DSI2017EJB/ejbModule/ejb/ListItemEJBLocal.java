@@ -18,9 +18,9 @@ public interface ListItemEJBLocal {
 	
 	public ListItem getListItem(long id);
 
-	public void add(ListItem listItem);
+	public void add(long metaItemId, float price);
 
-	public void update(long id, ListItem listItem);
+	public void update(long id, float price);
 
 	public void remove(long id);
 	

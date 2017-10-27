@@ -39,21 +39,20 @@ public class MetaItemAPI {
 	}
 
 	@POST
-	@Consumes("application/json")
-	public void add(MetaItem metaItem){
-		metaItemEJB.add(metaItem);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void add(@FormParam("description") String description, @FormParam("categoryId") long categoryId){
+		metaItemEJB.add(description, categoryId);
 	}
 	
 	@PUT
 	@Path("/{id}")
-	@Consumes("application/json")
-	public void update(@PathParam("id") long id, MetaItem metaItem){
-		metaItemEJB.update(id, metaItem);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void update(@PathParam("id") long id, @FormParam("description") String description, @FormParam("categoryId") long categoryId){
+		metaItemEJB.update(id, description, categoryId);
 	}
 	
 	@DELETE
 	@Path("/{id}")
-	@Consumes("application/json")
 	public void remove(@PathParam("id") long id){
 		metaItemEJB.remove(id);
 	}

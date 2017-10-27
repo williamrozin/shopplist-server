@@ -23,6 +23,7 @@ public class Category {
 	public Category(){
 		
 	}
+
 	public long getId() {
 		return id;
 	}

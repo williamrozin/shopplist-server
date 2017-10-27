@@ -38,16 +38,16 @@ public class ListItemAPI {
 	}
 
 	@POST
-	@Consumes("application/json")
-	public void add(ListItem listItem){
-		listItemEJB.add(listItem);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void add(@FormParam("metaItemId") long metaItemId, @FormParam("price") float price){
+		listItemEJB.add(metaItemId, price);
 	}
 
 	@PUT
 	@Path("/{id}")
-	@Consumes("application/json")
-	public void update(@PathParam("id") long id, ListItem listItem){
-		listItemEJB.update(id, listItem);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void update(@PathParam("id") long id, @FormParam("price") float price){
+		listItemEJB.update(id, price);
 	}
 
 	@PUT

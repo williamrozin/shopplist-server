@@ -28,6 +28,7 @@ public class ListItem {
 	public ListItem(){
 		
 	}
+
 	public long getId() {
 		return id;
 	}

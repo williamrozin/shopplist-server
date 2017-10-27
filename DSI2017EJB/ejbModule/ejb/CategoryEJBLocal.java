@@ -19,7 +19,7 @@ public interface CategoryEJBLocal {
 	
 	public Category getCategory(long id);
 
-	public void add(Category category);
+	public void add(String color, String description);
 
 	public void update(long id, Category category);
 

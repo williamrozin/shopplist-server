@@ -27,29 +27,29 @@ public class UserAPI {
 	@POST
 	@Path("/login")
 	@Produces("application/json")
-	@Consumes("application/json")
-	public User login(@HeaderParam("email") String email, @HeaderParam("password") String password){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public User login(@FormParam("email") String email, @FormParam("password") String password){
 		return clienteEJB.login(email, password);
 	}
 	
 	@POST
 	@Path("/signup")
-	@Consumes("application/json")
-	public void signup(@FormDataParam("email") String email, @FormDataParam("password") String password, @FormDataParam("name") String name){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void signup(@FormParam("email") String email, @FormParam("password") String password, @FormParam("name") String name){
 		clienteEJB.signup(email, name, password);
 	}
 
 	@PUT
 	@Path("/{id}")
-	@Consumes("application/json")
-	public void update(@PathParam("id") long id, User user){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void update(@PathParam("id") long id, @FormParam("name") String name){
 		clienteEJB.update(id, user);
 	}
 	
 	@PUT
 	@Path("/reset-password/{id}")
-	@Consumes("application/json")
-	public void changePassword(@PathParam("id") long id, String newPassword){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void changePassword(@PathParam("id") long id, @FormParam("newPassword") String  newPassword){
 		clienteEJB.changePassword(id, newPassword);
 	}	
 }

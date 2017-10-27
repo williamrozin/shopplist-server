@@ -14,7 +14,7 @@ public interface UserEJBLocal {
 
 	public void signup(String email, String name, String password);
 
-	public void update(long id, User user);
+	public void update(long id, String name);
 	
 	public void changePassword(long id, String newPassword);
 }

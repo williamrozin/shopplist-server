@@ -24,8 +24,9 @@ public class CategoryEJB implements CategoryEJBLocal {
 	}
 
 	@Override
-	public void add(Category category) {
-		em.persist(category);
+	public void add(String color, String description) {
+		Category cat = new Category(color, description);
+		em.persist(cat);
 	}
 
 	@Override

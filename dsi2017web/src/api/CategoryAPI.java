@@ -38,16 +38,16 @@ public class CategoryAPI {
 	}
 
 	@POST
-	@Consumes("application/json")
-	public void add(Category category){
-		categoryEJB.add(category);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void add(@FormParam("color") String color, @FormParam("description") String description){
+		categoryEJB.add(color, description);
 	}
 	
 	@PUT
 	@Path("/{id}")
-	@Consumes("application/json")
-	public void update(@PathParam("id") long id, Category category){
-		categoryEJB.update(id, category);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void update(@PathParam("id") long id, @FormParam("color") String color, @FormParam("description") String description){
+		categoryEJB.update(id, color, description);
 	}
 	
 	@DELETE

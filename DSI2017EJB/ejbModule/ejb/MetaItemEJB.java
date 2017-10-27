@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.Category;
 import model.MetaItem;
 @Stateless
 public class MetaItemEJB implements MetaItemEJBLocal {
@@ -23,19 +24,26 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	}
 
 	@Override
-	public void add(MetaItem metaItem) {
+	public void add(String description, long categoryId) {
+		CategoryEJB cat = new CategoryEJB();
+		Category category =  cat.getCategory(categoryId);
+		MetaItem metaItem = new MetaItem();
+		metaItem.setCategory(category);
+		metaItem.setDescription(description);
 		em.persist(metaItem);
 	}
 
 	@Override
-	public void update(long id, MetaItem newItem) {
+	public void update(long id, String description, long categoryId) {
 		MetaItem oldItem = em.find(MetaItem.class, id);
+		CategoryEJB cat = new CategoryEJB();
+		Category newCategory =  cat.getCategory(categoryId);
 
-		if (newItem.getCategory() != null)
-			oldItem.setCategory(newItem.getCategory());
+		if (categoryId != newCategory.getId())
+			oldItem.setCategory(newCategory);
 		
-		if (newItem.getDescription() != null)
-			oldItem.setDescription(newItem.getDescription());
+		if (description != null)
+			oldItem.setDescription(description);
 
 		em.merge(oldItem);
 	}
