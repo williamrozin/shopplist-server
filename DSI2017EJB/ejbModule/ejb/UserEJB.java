@@ -42,8 +42,8 @@ public class UserEJB implements UserEJBLocal {
 	}
 
 	@Override
-	public void update(String email, User newUser) {
-		User oldUsr = em.find(User.class, email);
+	public void update(long id, User newUser) {
+		User oldUsr = em.find(User.class, id);
 
 		if (newUser.getName() != null)
 			oldUsr.setName(newUser.getName());
