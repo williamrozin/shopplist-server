@@ -49,8 +49,8 @@ public class UserAPI {
 	
 	@PUT
 	@Path("/reset-password/{id}")
-	@Consumes("application/json")
-	public void changePassword(@PathParam("id") long id, String newPassword){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void changePassword(@PathParam("id") long id, @FormParam("newPassword") String newPassword){
 		clienteEJB.changePassword(id, newPassword);
 	}	
 }
