@@ -41,7 +41,7 @@ public class User {
 	}
 
 	public boolean login(String email, String password) {
-		return this.email.compareTo(email) > -1 && this.password.compareTo(password) > -1;
+		return this.email.equalsIgnoreCase(email) && this.password.equals(password);
 	}
 
 	public void setPassword(String password) {
