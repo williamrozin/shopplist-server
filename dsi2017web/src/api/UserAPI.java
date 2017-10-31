@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
@@ -27,16 +28,16 @@ public class UserAPI {
 	@POST
 	@Path("/login")
 	@Produces("application/json")
-	@Consumes("application/json")
-	public User login(@HeaderParam("email") String email, @HeaderParam("password") String password){
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public User login(@FormParam("email") String email, @FormParam("password") String password){
 		return clienteEJB.login(email, password);
 	}
 	
 	@POST
 	@Path("/signup")
 	@Consumes("application/json")
-	public void signup(@FormDataParam("email") String email, @FormDataParam("password") String password, @FormDataParam("name") String name){
-		clienteEJB.signup(email, name, password);
+	public void signup(User user){
+		clienteEJB.signup(user);
 	}
 
 	@PUT

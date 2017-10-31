@@ -36,8 +36,7 @@ public class UserEJB implements UserEJBLocal {
 	}
 
 	@Override
-	public void signup(String email, String name, String password) {
-		User user = new User(email, name, password);
+	public void signup(User user) {
 		em.persist(user);
 	}
 

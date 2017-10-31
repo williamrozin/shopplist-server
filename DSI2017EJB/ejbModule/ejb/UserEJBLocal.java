@@ -12,7 +12,7 @@ import model.User;
 public interface UserEJBLocal {
 	public User login(String email, String password);
 
-	public void signup(String email, String name, String password);
+	public void signup(User user);
 
 	public void update(long id, User user);
 	

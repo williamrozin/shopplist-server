@@ -17,15 +17,7 @@ import javax.persistence.NamedQuery;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String email;
 	private long id;
-<<<<<<< HEAD
-	private String nome;
-	private String password;
-
-	public String getNome() {
-		return nome;
-=======
 	private String email;
 	private String name;
 	private String password;
@@ -46,7 +38,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
->>>>>>> 7d41d4e729971d579c6e97d94a22dba5f6388be4
 	}
 
 	public boolean login(String email, String password) {
@@ -55,14 +46,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public boolean login(String email, String password) {
-		return this.email == email && this.password == password ? this : null;
 	}
 
 	public String getEmail() {
