@@ -19,11 +19,12 @@ public class MetaItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String description;
-	private Category category;
+	private long categoryId;
 
 	public MetaItem(){
 		
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -40,11 +41,11 @@ public class MetaItem {
 		this.description = description;
 	}
 
-	public Category getCategory() {
-		return category;
+	public long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
 	}
 }

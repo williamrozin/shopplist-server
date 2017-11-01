@@ -31,8 +31,8 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	public void update(long id, MetaItem newItem) {
 		MetaItem oldItem = em.find(MetaItem.class, id);
 
-		if (newItem.getCategory() != null)
-			oldItem.setCategory(newItem.getCategory());
+		if (newItem.getCategoryId() != oldItem.getCategoryId())
+			oldItem.setCategory(newItem.getCategoryId());
 		
 		if (newItem.getDescription() != null)
 			oldItem.setDescription(newItem.getDescription());
