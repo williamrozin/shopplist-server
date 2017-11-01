@@ -57,9 +57,9 @@ public class ListItemAPI {
 	}
 
 	@PUT
-	@Path("/{id}/unckeck")
-	public void unckeck(@PathParam("id") long id){
-		listItemEJB.unckeck(id);
+	@Path("/{id}/uncheck")
+	public void uncheck(@PathParam("id") long id){
+		listItemEJB.uncheck(id);
 	}
 	
 	@DELETE

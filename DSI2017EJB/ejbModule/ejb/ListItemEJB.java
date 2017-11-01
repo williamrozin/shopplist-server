@@ -31,11 +31,8 @@ public class ListItemEJB implements ListItemEJBLocal {
 	public void update(long id, ListItem newItem) {
 		ListItem oldItem = em.find(ListItem.class, id);
 
-		if (newItem.isChecked() != oldItem.isChecked())
-			if (newItem.isChecked())
-				oldItem.setChecked();
-			else
-				oldItem.unsetChecked();
+		if (newItem.getChecked() != oldItem.getChecked())
+				oldItem.setChecked(newItem.getChecked());
 		
 		if (newItem.getPrice() != oldItem.getPrice())
 			oldItem.setPrice(newItem.getPrice());		
@@ -60,16 +57,16 @@ public class ListItemEJB implements ListItemEJBLocal {
 	public void check(long id) {
 		ListItem oldItem = em.find(ListItem.class, id);
 
-		oldItem.setChecked();	
+		oldItem.setChecked(true);	
 
 		em.merge(oldItem);
 	}
 
 	@Override
-	public void unckeck(long id) {
+	public void uncheck(long id) {
 		ListItem oldItem = em.find(ListItem.class, id);
 
-		oldItem.unsetChecked();
+		oldItem.setChecked(false);
 
 		em.merge(oldItem);		
 	}

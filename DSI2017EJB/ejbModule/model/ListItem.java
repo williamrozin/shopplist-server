@@ -36,16 +36,8 @@ public class ListItem {
 		this.id = id;
 	}
 
-	public boolean isChecked() {
+	public boolean getChecked() {
 		return checked;
-	}
-
-	public void setChecked() {
-		this.checked = true;
-	}
-
-	public void unsetChecked() {
-		this.checked = false;
 	}
 
 	public float getPrice() {

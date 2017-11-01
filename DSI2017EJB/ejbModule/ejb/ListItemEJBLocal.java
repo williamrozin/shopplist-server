@@ -26,5 +26,5 @@ public interface ListItemEJBLocal {
 	
 	public void check(long id);
 	
-	public void unckeck(long id);
+	public void uncheck(long id);
 }
