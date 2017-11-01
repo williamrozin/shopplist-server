@@ -1,5 +1,6 @@
 package ejb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -19,8 +20,16 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	}
 
 	@Override
-	public List<ShoppingList> getAllShoppingLists() {
-		return em.createNamedQuery("getAllShoppingLists", ShoppingList.class).getResultList();
+	public List<ShoppingList> getAllShoppingLists(long userId) {
+		List<ShoppingList> lists = em.createNamedQuery("getAllShoppingLists", ShoppingList.class).getResultList();
+		List<ShoppingList> userList = new ArrayList<ShoppingList>();
+
+		for(ShoppingList list : lists) {
+			if (list.getUserId() == userId) {
+				userList.add(list);
+			}
+		}
+		return userList;
 	}
 
 	@Override
@@ -66,7 +75,7 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	@Override
 	public void setListCompleted(long id) {
 		ShoppingList list = em.find(ShoppingList.class, id);
-		list.setCompleted();
+		list.setCompleted(true);
 		em.merge(list);
 		
 	}
@@ -74,7 +83,7 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	@Override
 	public void unsetListCompleted(long id) {
 		ShoppingList list = em.find(ShoppingList.class, id);
-		list.unsetCompleted();
+		list.setCompleted(false);
 		em.merge(list);
 	}
 }

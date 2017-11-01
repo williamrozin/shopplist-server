@@ -1,9 +1,12 @@
 package ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.ShoppingList;
 import model.User;
 
 /**
@@ -21,8 +24,15 @@ public class UserEJB implements UserEJBLocal {
 
 	@Override
 	public User login(String email, String password) {
-		User user = em.find(User.class, email);
-		return user.login(email, password);
+		List<User> users = em.createNamedQuery("getAllUsers", User.class).getResultList();
+		
+		for(User user:users) {
+			if (user.login(email, password)) {
+				return user;
+			}
+		}
+		
+		return null;
 	}
 
 	@Override
@@ -31,18 +41,18 @@ public class UserEJB implements UserEJBLocal {
 	}
 
 	@Override
-	public void update(String email, User newUser) {
-		User oldUsr = em.find(User.class, email);
+	public void update(long id, User newUser) {
+		User oldUsr = em.find(User.class, id);
 
-		if (newUser.getNome() != null)
-			oldUsr.setNome(newUser.getNome());
+		if (newUser.getName() != null)
+			oldUsr.setName(newUser.getName());
 
 		em.merge(oldUsr);
 	}
 
 	@Override
-	public void changePassword(String email, String newPassword) {
-		User oldUsr = em.find(User.class, email);
+	public void changePassword(long id, String newPassword) {
+		User oldUsr = em.find(User.class, id);
 
 		if (newPassword != null)
 			oldUsr.setPassword(newPassword);

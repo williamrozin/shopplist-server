@@ -31,7 +31,7 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	public void update(long id, MetaItem newItem) {
 		MetaItem oldItem = em.find(MetaItem.class, id);
 
-		if (newItem.getCategory() != null)
+		if (newItem.getCategory() != null && newItem.getCategory().getId() != oldItem.getCategory().getId())
 			oldItem.setCategory(newItem.getCategory());
 		
 		if (newItem.getDescription() != null)
@@ -44,12 +44,6 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	public void remove(long id) {
 		MetaItem item = em.find(MetaItem.class, id);
 		em.remove(item);
-	}
-
-	@Override
-	public ejb.List<MetaItem> getAllMetaItems() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

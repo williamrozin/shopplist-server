@@ -20,11 +20,14 @@ public class ListItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private MetaItem metaItem;
 	private boolean checked;
 	private float price;
 
+	public ListItem(){
+		
+	}
 	public long getId() {
 		return id;
 	}
@@ -53,15 +56,15 @@ public class ListItem {
 		this.price = price;
 	}
 
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+
 	public MetaItem getMetaItem() {
 		return metaItem;
 	}
 
 	public void setMetaItem(MetaItem metaItem) {
 		this.metaItem = metaItem;
-	}
-
-	public void setChecked(boolean checked) {
-		this.checked = checked;
 	}
 }

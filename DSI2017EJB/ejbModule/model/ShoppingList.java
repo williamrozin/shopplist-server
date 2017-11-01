@@ -3,13 +3,16 @@ package model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,11 +28,15 @@ public class ShoppingList {
 	private long id;
 	private String description;
 	private boolean completed;
-	private User user;
+	private long userId;
 	@Temporal(value=TemporalType.DATE)
 	private Date date;
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<ListItem> items;
 
+	public void ShoppingList(){
+		
+	}
 	public long getId() {
 		return id;
 	}
@@ -46,24 +53,20 @@ public class ShoppingList {
 		this.description = description;
 	}
 
-	public boolean isCompleted() {
-		return completed;
+	public boolean getCompleted() {
+		return this.completed;
 	}
 
-	public void setCompleted() {
-		this.completed = true;
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 
-	public void unsetCompleted() {
-		this.completed = true;
+	public long getUserId() {
+		return userId;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public List<ListItem> getItems() {
