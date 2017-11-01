@@ -1,10 +1,12 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -19,7 +21,8 @@ public class MetaItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String description;
-	private long categoryId;
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	private Category category;
 
 	public MetaItem(){
 		
@@ -41,11 +44,11 @@ public class MetaItem {
 		this.description = description;
 	}
 
-	public long getCategoryId() {
-		return categoryId;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryId(long categoryId) {
-		this.categoryId = categoryId;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

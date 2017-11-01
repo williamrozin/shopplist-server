@@ -66,7 +66,7 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	@Override
 	public void setListCompleted(long id) {
 		ShoppingList list = em.find(ShoppingList.class, id);
-		list.setCompleted();
+		list.setCompleted(true);
 		em.merge(list);
 		
 	}
@@ -74,7 +74,7 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 	@Override
 	public void unsetListCompleted(long id) {
 		ShoppingList list = em.find(ShoppingList.class, id);
-		list.unsetCompleted();
+		list.setCompleted(false);
 		em.merge(list);
 	}
 }

@@ -54,14 +54,12 @@ public class ShoppingListAPI {
 
 	@PUT
 	@Path("/{id}/complete")
-	@Consumes("application/json")
 	public void complete(@PathParam("id") long id){
 		shoppingListEJB.setListCompleted(id);
 	}
 
 	@PUT
 	@Path("/{id}/uncomplete")
-	@Consumes("application/json")
 	public void uncomplete(@PathParam("id") long id){
 		shoppingListEJB.unsetListCompleted(id);
 	}
