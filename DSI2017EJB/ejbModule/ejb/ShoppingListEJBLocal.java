@@ -16,7 +16,7 @@ import model.ShoppingList;
 @Table(name = "ShoppingList")
 public interface ShoppingListEJBLocal {
 
-	public List<ShoppingList> getAllShoppingLists();
+	public List<ShoppingList> getAllShoppingLists(long userId);
 
 	public ShoppingList getShoppingList(long id);
 	
