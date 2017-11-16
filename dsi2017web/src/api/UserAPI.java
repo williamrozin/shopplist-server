@@ -16,6 +16,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import ejb.UserEJBLocal;
 import model.Category;
+import model.Login;
 import model.User;
 
 @Path("/user")
@@ -28,9 +29,9 @@ public class UserAPI {
 	@POST
 	@Path("/login")
 	@Produces("application/json")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public User login(@FormParam("email") String email, @FormParam("password") String password){
-		return clienteEJB.login(email, password);
+	@Consumes("application/json")
+	public User login(Login login){
+		return clienteEJB.login(login.getEmail(), login.getPassword());
 	}
 	
 	@POST
