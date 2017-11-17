@@ -21,7 +21,7 @@ public class MetaItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String description;
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.MERGE})
 	private Category category;
 
 	public MetaItem(){

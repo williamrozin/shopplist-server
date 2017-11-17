@@ -1,6 +1,7 @@
 package ejb;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Local;
 import javax.persistence.NamedQueries;
@@ -20,7 +21,7 @@ public interface CategoryEJBLocal {
 	public Category getCategory(long id);
 
 	public void add(Category category);
-
+	
 	public void update(long id, Category category);
 
 	public void remove(long id);
