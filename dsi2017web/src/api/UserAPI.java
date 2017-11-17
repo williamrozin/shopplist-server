@@ -36,9 +36,11 @@ public class UserAPI {
 	
 	@POST
 	@Path("/signup")
+	@Produces("application/json")
 	@Consumes("application/json")
-	public void signup(User user){
+	public User signup(User user){
 		clienteEJB.signup(user);
+		return user;
 	}
 
 	@PUT

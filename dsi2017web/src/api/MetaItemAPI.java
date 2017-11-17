@@ -44,6 +44,14 @@ public class MetaItemAPI {
 		metaItemEJB.add(metaItem);
 	}
 	
+	@POST
+	@Consumes("application/json")
+	@Path("/many")
+	public void addMany(List<MetaItem> metaItems){
+		metaItemEJB.addMany(metaItems);
+	}
+	
+	
 	@PUT
 	@Path("/{id}")
 	@Consumes("application/json")

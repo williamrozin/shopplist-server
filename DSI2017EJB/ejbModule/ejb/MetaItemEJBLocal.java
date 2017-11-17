@@ -18,6 +18,8 @@ public interface MetaItemEJBLocal {
 
 	public void add(MetaItem metaItem);
 
+	public void addMany(List<MetaItem> metaItems);
+	
 	public void update(long id, MetaItem metaItem);
 
 	public void remove(long id);

@@ -43,8 +43,10 @@ public class ShoppingListAPI {
 	
 	@POST
 	@Consumes("application/json")
-	public void add(ShoppingList list){
+	@Produces("application/json")
+	public ShoppingList add(ShoppingList list){
 		shoppingListEJB.add(list);
+		return list;
 	}
 	
 	@PUT

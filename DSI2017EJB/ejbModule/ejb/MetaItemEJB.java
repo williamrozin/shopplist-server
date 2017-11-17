@@ -28,6 +28,13 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	}
 
 	@Override
+	public void addMany(List<MetaItem> metaItems) {
+		for(MetaItem metaItem : metaItems) {
+			em.persist(metaItem);	
+		}
+	}
+	
+	@Override
 	public void update(long id, MetaItem newItem) {
 		MetaItem oldItem = em.find(MetaItem.class, id);
 
