@@ -26,13 +26,6 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	public void add(MetaItem metaItem) {
 		em.persist(metaItem);
 	}
-
-	@Override
-	public void addMany(List<MetaItem> metaItems) {
-		for(MetaItem metaItem : metaItems) {
-			em.persist(metaItem);	
-		}
-	}
 	
 	@Override
 	public void update(long id, MetaItem newItem) {

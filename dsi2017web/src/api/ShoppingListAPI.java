@@ -56,6 +56,12 @@ public class ShoppingListAPI {
 		shoppingListEJB.update(id, list);
 	}
 
+	@DELETE
+	@Path("/{id}")
+	public void remove(@PathParam("id") long id){
+		shoppingListEJB.remove(id);
+	}
+	
 	@PUT
 	@Path("/{id}/complete")
 	public void complete(@PathParam("id") long id){
