@@ -39,12 +39,10 @@ public class ShoppingListEJB implements ShoppingListEJBLocal {
 
 	@Override
 	public void update(long id, ShoppingList newList) {
-		ShoppingList oldList = em.find(ShoppingList.class, id);
-
-		if (newList.getDescription() != null)
-			oldList.setDescription(newList.getDescription());
-			
-		em.merge(oldList);
+		ShoppingList list = em.find(ShoppingList.class, id);
+		
+		if (list != null)
+			em.merge(newList);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class ShoppingList {
 	}
 
 	public void setItems(List<ListItem> items) {
-		this.items = items;
+		this.items = new ArrayList<ListItem>();
+		this.items.addAll(items);
 	}
 
 	public Date getDate() {
@@ -91,5 +93,9 @@ public class ShoppingList {
 	
 	public void removeItemOnList(ListItem item) {
 		this.items.remove(item);
+	}
+	
+	public void removeAllItems() {
+		this.items = new ArrayList<>();
 	}
 }

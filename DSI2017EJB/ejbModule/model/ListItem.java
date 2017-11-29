@@ -20,7 +20,7 @@ public class ListItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.MERGE})
 	private MetaItem metaItem;
 	private boolean checked;
 	private float price;
