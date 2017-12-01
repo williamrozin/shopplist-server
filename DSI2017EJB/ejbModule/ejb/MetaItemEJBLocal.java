@@ -12,7 +12,7 @@ import model.MetaItem;
 @Local
 @Table(name = "MetaItem")
 public interface MetaItemEJBLocal {
-	public List<MetaItem> getAllMetaItems();
+	public List<MetaItem> getAllMetaItems(long userId);
 	
 	public MetaItem getMetaItem(long id);
 

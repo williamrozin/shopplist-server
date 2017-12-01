@@ -16,7 +16,7 @@ import model.Category;
 @Table(name = "Category")
 public interface CategoryEJBLocal {
 
-	public List<Category> getCategories();
+	public List<Category> getCategories(long userId);
 	
 	public Category getCategory(long id);
 

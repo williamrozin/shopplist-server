@@ -30,7 +30,6 @@ public class ShoppingListAPI {
 	@GET
 	@Produces("application/json")
 	public List<ShoppingList> getShoppingLists(@HeaderParam("userId") long userId){
-		System.out.println("Chamando Dr hans chucrute");
 		return shoppingListEJB.getAllShoppingLists(userId);
 	}
 	

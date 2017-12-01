@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -26,8 +27,8 @@ public class CategoryAPI {
 	
 	@GET
 	@Produces("application/json")
-	public List<Category> getCategories(){
-		return categoryEJB.getCategories();
+	public List<Category> getCategories(@HeaderParam("userId") long userId){
+		return categoryEJB.getCategories(userId);
 	}
 
 	@GET

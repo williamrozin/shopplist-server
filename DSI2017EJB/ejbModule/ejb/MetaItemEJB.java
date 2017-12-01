@@ -1,5 +1,6 @@
 package ejb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -18,8 +19,17 @@ public class MetaItemEJB implements MetaItemEJBLocal {
 	}
 
 	@Override
-	public List<MetaItem> getAllMetaItems() {
-		return em.createNamedQuery("getAllMetaItems", MetaItem.class).getResultList();
+	public List<MetaItem> getAllMetaItems(long userId) {
+		List<MetaItem> allMetaItems = em.createNamedQuery("getAllMetaItems", MetaItem.class).getResultList();
+		List<MetaItem> userMetaItems = new ArrayList<MetaItem>();
+		
+		for (MetaItem mi : allMetaItems) {
+			if (mi.getUserId() == 0 || mi.getUserId() == userId) {
+				userMetaItems.add(mi);
+			}
+		}
+		
+		return userMetaItems;
 	}
 
 	@Override

@@ -17,6 +17,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private long userId;
 	private String color;
 	private String description;
 
@@ -45,6 +46,14 @@ public class Category {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public long getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 }

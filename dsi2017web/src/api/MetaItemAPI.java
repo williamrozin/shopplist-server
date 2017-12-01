@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -27,8 +28,8 @@ public class MetaItemAPI {
 	
 	@GET
 	@Produces("application/json")
-	public List<MetaItem> getAllMetaItems(){
-		return metaItemEJB.getAllMetaItems();
+	public List<MetaItem> getAllMetaItems(@HeaderParam("userId") long userId){
+		return metaItemEJB.getAllMetaItems(userId);
 	}
 
 	@GET

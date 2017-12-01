@@ -20,6 +20,7 @@ public class MetaItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private long userId;
 	private String description;
 	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.MERGE})
 	private Category category;
@@ -50,5 +51,13 @@ public class MetaItem {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 }

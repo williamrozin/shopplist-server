@@ -1,6 +1,8 @@
 package ejb;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.ejb.Stateless;
@@ -20,8 +22,17 @@ public class CategoryEJB implements CategoryEJBLocal {
 	}
 
 	@Override
-	public List<Category> getCategories() {
-		return em.createNamedQuery("getAllCategories", Category.class).getResultList();
+	public List<Category> getCategories(long userId) {
+		List<Category> allCategories = em.createNamedQuery("getAllCategories", Category.class).getResultList();
+		List<Category> userCategories = new ArrayList<Category>();
+		
+		for(Category cat : allCategories) {
+			if (cat.getUserId() == 0 || cat.getUserId() == userId) {
+				userCategories.add(cat);
+			}
+		}
+		
+		return userCategories;
 	}
 
 	@Override
